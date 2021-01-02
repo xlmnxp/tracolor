@@ -1,4 +1,4 @@
-fn hex_to_rgba(hex: String) -> (u32, u32, u32, f32) {
+fn hex_to_rgba(hex: String) -> (u8, u8, u8, f32) {
     let mut alpha = 1f32;
     let mut hex_on_lower = hex.clone().to_lowercase();
 
@@ -12,7 +12,7 @@ fn hex_to_rgba(hex: String) -> (u32, u32, u32, f32) {
             temp_hex.push(hex_on_lower.chars().nth(2).unwrap());
             temp_hex.push(hex_on_lower.chars().nth(2).unwrap());
 
-            if hex_on_lower.len() == 4{
+            if hex_on_lower.len() == 4 {
                 let mut temp_alpha_hex = String::new();
                 temp_alpha_hex.push(hex_on_lower.chars().nth(3).unwrap());
                 temp_alpha_hex.push(hex_on_lower.chars().nth(3).unwrap());
@@ -33,7 +33,7 @@ fn hex_to_rgba(hex: String) -> (u32, u32, u32, f32) {
     let red = (decimal_val >> 16) & 0xFF;
     let green = (decimal_val >> 8) & 0xFF;
     let blue = decimal_val & 0xFF;
-    (red, green, blue, alpha)
+    (red as u8, green as u8, blue as u8, alpha)
 }
 
 fn main() {
